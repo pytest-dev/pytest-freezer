@@ -1,5 +1,5 @@
-def test_freezer_move_to_method(testdir):
-    testdir.makepyfile(
+def test_freezer_move_to_method(pytester):
+    pytester.makepyfile(
         """
         from datetime import datetime
 
@@ -10,11 +10,11 @@ def test_freezer_move_to_method(testdir):
             assert datetime.now().year == 2022
         """
     )
-    testdir.runpytest().assert_outcomes(passed=1)
+    pytester.runpytest().assert_outcomes(passed=1)
 
 
-def test_mark_decorator(testdir):
-    testdir.makepyfile(
+def test_mark_decorator(pytester):
+    pytester.makepyfile(
         """
         import pytest
         from datetime import datetime
@@ -24,11 +24,11 @@ def test_mark_decorator(testdir):
             assert datetime.now().isoformat() == "2022-10-17T12:34:56"
         """
     )
-    testdir.runpytest().assert_outcomes(passed=1)
+    pytester.runpytest().assert_outcomes(passed=1)
 
 
-def test_frozen_by_default_with_fixture(testdir):
-    testdir.makepyfile(
+def test_frozen_by_default_with_fixture(pytester):
+    pytester.makepyfile(
         """
         import time
         from datetime import datetime
@@ -40,11 +40,11 @@ def test_frozen_by_default_with_fixture(testdir):
             assert dt1 == dt2
         """
     )
-    testdir.runpytest().assert_outcomes(passed=1)
+    pytester.runpytest().assert_outcomes(passed=1)
 
 
-def test_not_frozen_with_no_fixture(testdir):
-    testdir.makepyfile(
+def test_not_frozen_with_no_fixture(pytester):
+    pytester.makepyfile(
         """
         import time
         from datetime import datetime
@@ -56,11 +56,11 @@ def test_not_frozen_with_no_fixture(testdir):
             assert dt1 < dt2
         """
     )
-    testdir.runpytest().assert_outcomes(passed=1)
+    pytester.runpytest().assert_outcomes(passed=1)
 
 
-def test_tick_method(testdir):
-    testdir.makepyfile(
+def test_tick_method(pytester):
+    pytester.makepyfile(
         """
         from datetime import datetime
         
@@ -73,4 +73,25 @@ def test_tick_method(testdir):
             assert datetime.now() == datetime(2022, 10, 17, 0, 0, 13)
         """
     )
-    testdir.runpytest().assert_outcomes(passed=1)
+    pytester.runpytest().assert_outcomes(passed=1)
+
+
+def test_durations(pytester):
+    pytester.makepyfile(
+        """
+        def test_durations(freezer):
+            freezer.move_to('2000-01-01')
+        """
+    )
+    result = pytester.runpytest("--durations=3", "-vv")
+    durations = {}
+    for line in result.outlines:
+        if "test_durations.py::test_durations" not in line:
+            continue
+        for stage in "setup", "call", "teardown":
+            if stage in line:
+                duration = line.split()[0]
+                durations[stage] = float(duration[:-1])
+    assert 0 <= durations["setup"] <= 1
+    assert 0 <= durations["call"] <= 1
+    assert 0 <= durations["teardown"] <= 1

@@ -2,6 +2,9 @@ import pytest
 import freezegun
 
 
+freezegun.configure(extend_ignore_list=["_pytest.terminal", "_pytest.runner"])
+
+
 @pytest.fixture
 def freezer(request):
     """Freeze time by mocking the datetime module"""
