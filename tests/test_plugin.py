@@ -74,3 +74,24 @@ def test_tick_method(testdir):
         """
     )
     testdir.runpytest().assert_outcomes(passed=1)
+
+
+def test_durations(testdir):
+    testdir.makepyfile(
+        """
+        def test_durations(freezer):
+            freezer.move_to('2000-01-01')
+        """
+    )
+    result = testdir.runpytest("--durations=3", "-vv")
+    durations = {}
+    for line in result.outlines:
+        if "test_durations.py::test_durations" not in line:
+            continue
+        for stage in "setup", "call", "teardown":
+            if stage in line:
+                duration = line.split()[0]
+                durations[stage] = float(duration[:-1])
+    assert 0 <= durations["setup"] <= 1
+    assert 0 <= durations["call"] <= 1
+    assert 0 <= durations["teardown"] <= 1
