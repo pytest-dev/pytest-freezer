@@ -16,7 +16,7 @@ readme = "README.rst"
 description = "Pytest plugin providing a fixture interface for spulec/freezegun"
 
 [project.urls]
-Homepage = "https://github.com/wimglenn/pytest-freezer"
+Homepage = "https://github.com/pytest-dev/pytest-freezer"
 
 [project.entry-points.pytest11]
 freezer = "pytest_freezer"
