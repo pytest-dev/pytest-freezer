@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "pytest_freezer"
 authors = [{name = "Wim Glenn", email = "hey@wimglenn.com"}]
-license = {file = "LICENSE"}
+license = "MIT"
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Framework :: Pytest",
