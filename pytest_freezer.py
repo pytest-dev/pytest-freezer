@@ -1,8 +1,5 @@
-"""Pytest plugin providing a fixture interface for spulec/freezegun"""
 import pytest
 import freezegun
-
-__version__ = "0.4.2"
 
 
 @pytest.fixture
