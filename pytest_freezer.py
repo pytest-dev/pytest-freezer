@@ -4,6 +4,7 @@ import freezegun
 
 @pytest.fixture
 def freezer(request):
+    """Freeze time by mocking the datetime module"""
     marker = request.node.get_closest_marker("freeze_time")
     if marker:
         ignore = marker.kwargs.pop("ignore", [])
