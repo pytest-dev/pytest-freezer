@@ -1,10 +1,10 @@
 |actions|_ |codecov|_ |pypi|_ |womm|_
 
-.. |actions| image:: https://github.com/wimglenn/pytest-freezer/actions/workflows/tests.yml/badge.svg
-.. _actions: https://github.com/wimglenn/pytest-freezer/actions/workflows/tests.yml/
+.. |actions| image:: https://github.com/pytest-dev/pytest-freezer/actions/workflows/tests.yml/badge.svg
+.. _actions: https://github.com/pytest-dev/pytest-freezer/actions/workflows/tests.yml/
 
-.. |codecov| image:: https://codecov.io/gh/wimglenn/pytest-freezer/branch/main/graph/badge.svg
-.. _codecov: https://codecov.io/gh/wimglenn/pytest-freezer
+.. |codecov| image:: https://codecov.io/gh/pytest-dev/pytest-freezer/branch/main/graph/badge.svg
+.. _codecov: https://codecov.io/gh/pytest-dev/pytest-freezer
 
 .. |pypi| image:: https://img.shields.io/pypi/v/pytest-freezer.svg
 .. _pypi: https://pypi.org/project/pytest-freezer
@@ -28,7 +28,7 @@ Installation:
 Usage:
 ------
 
-The fixture name is ``freezer``. It is a ``freezegun.api.FrozenDateTimeFactory`` instance, so refer to upstream freezegun usage_ for the methods .
+The fixture name is ``freezer``. It is a ``freezegun.api.FrozenDateTimeFactory`` instance, so refer to upstream freezegun usage_ for the methods.
 
 Time is frozen by default when the fixture is injected:
 
