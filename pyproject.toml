@@ -10,7 +10,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Framework :: Pytest",
 ]
-version = "0.4.3"
+version = "0.4.4"
 dependencies = ["pytest >= 3.6", "freezegun"]
 readme = "README.rst"
 description = "Pytest plugin providing a fixture interface for spulec/freezegun"

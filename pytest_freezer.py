@@ -7,15 +7,12 @@ def freezer(request):
     """Freeze time by mocking the datetime module"""
     marker = request.node.get_closest_marker("freeze_time")
     if marker:
-        ignore = marker.kwargs.pop("ignore", [])
         args = marker.args
         kwargs = marker.kwargs
     else:
         args = ()
         kwargs = {}
-        ignore = []
-    ignore += "_pytest.terminal", "_pytest.runner"
-    freezer = freezegun.freeze_time(*args, ignore=ignore, **kwargs)
+    freezer = freezegun.freeze_time(*args, **kwargs)
     try:
         yield freezer.start()
     finally:
