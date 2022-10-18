@@ -1,0 +1,21 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "pytest_freezer"
+authors = [{name = "Wim Glenn", email = "hey@wimglenn.com"}]
+license = {file = "LICENSE"}
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Framework :: Pytest",
+]
+dynamic = ["version", "description"]
+dependencies = ["pytest >= 3.6", "freezegun"]
+readme = "README.rst"
+
+[project.urls]
+Homepage = "https://github.com/wimglenn/pytest-freezer"
+
+[project.entry-points.pytest11]
+freezer = "pytest_freezer"
