@@ -1,5 +1,5 @@
-import pytest
 import freezegun
+import pytest
 
 
 freezegun.configure(extend_ignore_list=["_pytest.terminal", "_pytest.runner"])
@@ -9,17 +9,10 @@ freezegun.configure(extend_ignore_list=["_pytest.terminal", "_pytest.runner"])
 def freezer(request):
     """Freeze time by mocking the datetime module"""
     marker = request.node.get_closest_marker("freeze_time")
-    if marker:
-        args = marker.args
-        kwargs = marker.kwargs
-    else:
-        args = ()
-        kwargs = {}
-    freezer = freezegun.freeze_time(*args, **kwargs)
-    try:
-        yield freezer.start()
-    finally:
-        freezer.stop()
+    args = getattr(marker, "args", ())
+    kwargs = getattr(marker, "kwargs", {})
+    with freezegun.freeze_time(*args, **kwargs) as frozen_datetime_factory:
+        yield frozen_datetime_factory
 
 
 def pytest_collection_modifyitems(items):
