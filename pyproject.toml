@@ -10,7 +10,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Framework :: Pytest",
 ]
-version = "0.4.5"
+version = "0.4.6"
 dependencies = ["pytest >= 3.6", "freezegun >= 1.0"]
 requires-python = ">= 3.6"
 readme = "README.rst"
