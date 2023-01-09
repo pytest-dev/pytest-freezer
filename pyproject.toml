@@ -12,7 +12,7 @@ classifiers = [
 ]
 version = "0.4.6"
 dependencies = ["pytest >= 3.6", "freezegun >= 1.0"]
-requires-python = ">= 3.6"
+requires-python = ">= 3.7"
 readme = "README.rst"
 description = "Pytest plugin providing a fixture interface for spulec/freezegun"
 
