@@ -10,7 +10,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Framework :: Pytest",
 ]
-version = "0.4.6"
+version = "0.4.7"
 dependencies = ["pytest >= 3.6", "freezegun >= 1.0"]
 requires-python = ">= 3.6"
 readme = "README.rst"
@@ -21,3 +21,18 @@ Homepage = "https://github.com/pytest-dev/pytest-freezer"
 
 [project.entry-points.pytest11]
 freezer = "pytest_freezer"
+
+[tool.hatch.build]
+include = [
+    "LICENSE",
+    "README.rst",
+    "pyproject.toml",
+    "pytest_freezer.py",
+    "/tests",
+]
+exclude = [
+    ".coverage",
+    ".idea",
+    ".pytest_cache",
+    ".venv",
+]
