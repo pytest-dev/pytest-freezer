@@ -22,7 +22,7 @@ Homepage = "https://github.com/pytest-dev/pytest-freezer"
 [project.entry-points.pytest11]
 freezer = "pytest_freezer"
 
-[tool.hatch.build]
+[tool.hatch.build.targets.sdist]
 include = [
     "LICENSE",
     "README.rst",
