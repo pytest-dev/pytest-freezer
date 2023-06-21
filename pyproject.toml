@@ -1,16 +1,16 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
 
 [project]
 name = "pytest_freezer"
 authors = [{name = "Wim Glenn", email = "hey@wimglenn.com"}]
-license = "MIT"
+license = {file = "LICENSE"}
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Framework :: Pytest",
 ]
-version = "0.4.7"
+version = "0.4.8"
 dependencies = ["pytest >= 3.6", "freezegun >= 1.0"]
 requires-python = ">= 3.6"
 readme = "README.rst"
@@ -22,17 +22,5 @@ Homepage = "https://github.com/pytest-dev/pytest-freezer"
 [project.entry-points.pytest11]
 freezer = "pytest_freezer"
 
-[tool.hatch.build]
-include = [
-    "LICENSE",
-    "README.rst",
-    "pyproject.toml",
-    "pytest_freezer.py",
-    "/tests",
-]
-exclude = [
-    ".coverage",
-    ".idea",
-    ".pytest_cache",
-    ".venv",
-]
+[tool.flit.sdist]
+include = ["tests/"]
