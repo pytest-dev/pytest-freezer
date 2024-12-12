@@ -2,11 +2,9 @@ name: tests
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
   schedule:
     - cron: "0 0 * * 0"
   workflow_dispatch:
@@ -40,7 +38,7 @@ jobs:
       - name: Run tests for ${{ matrix.python-version }} on ${{ matrix.os }}
         run: coverage run --source=pytest_freezer -m pytest && coverage report -m
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           fail_ci_if_error: false
           token: ${{ secrets.CODECOV_TOKEN }}
