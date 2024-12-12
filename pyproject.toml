@@ -4,16 +4,16 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "pytest_freezer"
-authors = [{name = "Wim Glenn", email = "hey@wimglenn.com"}]
+authors = [{name = "Wim Jeantine-Glenn", email = "hey@wimglenn.com"}]
 license = {file = "LICENSE"}
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Framework :: Pytest",
 ]
-version = "0.4.8"
+version = "0.4.9"
 dependencies = ["pytest >= 3.6", "freezegun >= 1.1"]
 requires-python = ">= 3.6"
-readme = "README.rst"
+readme = "README.md"
 description = "Pytest plugin providing a fixture interface for spulec/freezegun"
 
 [project.urls]
